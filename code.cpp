@@ -6,12 +6,12 @@
 //
 // solution/code.cpp has the solution's version.
 
+
 void greet(const std::string & salutation, const std::string & name)
 {
-        std::cout << "Hello, world!\n";
+        std::cout << salutation<<", "<<name<<"!\n";
 	sleep(name.size()/5);
 }
-
 
 
 
