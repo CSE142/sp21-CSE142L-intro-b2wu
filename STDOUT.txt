@@ -1,0 +1,28 @@
+NOTE     You already have credential caching enabled.
+NOTE     Unable to check for updates.
+NOTE     You already have credential caching enabled.
+NOTE     Unable to check for updates.
+rm -rf build/ .tmp
+rm -rf *.gv *-gv.pdf *.pin-trace #*.csv 
+rm -rf *.exe *.o *.i *.s *.out *.d *.gcda *.gcno *.gprof *.gcov *.csv.raw core	
+rm -rf *.out
+NOTE     You already have credential caching enabled.
+NOTE     Unable to check for updates.
+NOTE     You already have credential caching enabled.
+NOTE     Unable to check for updates.
+mkdir -p build/
+cp .tmp/code.cpp build/code.cpp
+g++ -c -Wall -Werror -g      -I/course/cse141pp-archlab/pcm -pthread  -I/course/cse141pp-archlab/libarchlab -I/course/cse141pp-archlab -I/usr/local/include -I/googletest/googletest/include -I/course/CSE141pp-SimpleCNN -I./build/  -std=gnu++11  build/code.cpp -o build/code.o
+g++ -c -Wall -Werror -g      -I/course/cse141pp-archlab/pcm -pthread  -I/course/cse141pp-archlab/libarchlab -I/course/cse141pp-archlab -I/usr/local/include -I/googletest/googletest/include -I/course/CSE141pp-SimpleCNN -I./build/  -std=gnu++11  main.cpp -o main.o
+g++ build/code.o main.o    -pthread  -L/usr/local/lib -L/course/cse141pp-archlab/libarchlab -L/course/cse141pp-archlab/pcm -larchlab -lpcm -lpapi -lboost_program_options   -o code.exe
+g++ -E -c -Wall -Werror -g      -I/course/cse141pp-archlab/pcm -pthread  -I/course/cse141pp-archlab/libarchlab -I/course/cse141pp-archlab -I/usr/local/include -I/googletest/googletest/include -I/course/CSE141pp-SimpleCNN -I./build/  -std=gnu++11  code.cpp -o code.i
+g++ -S -c -Wall -Werror -g      -I/course/cse141pp-archlab/pcm -pthread  -I/course/cse141pp-archlab/libarchlab -I/course/cse141pp-archlab -I/usr/local/include -I/googletest/googletest/include -I/course/CSE141pp-SimpleCNN -I./build/  -std=gnu++11  -g0 code.cpp -o code.s
+(./code.exe --stats-file code-stats.csv --stat runtime=ARCHLAB_WALL_TIME --name Steven > code.out 2>&1)
+pretty-csv code-stats.csv >> code.out
+cat code.out
+Error: unsupported processor. Only Intel(R) processors are supported (Atom(R) and microarchitecture codename Nehalem/Nehalem-EP, Atom(tm), Westmere/Clarkdale, Sandy Bridge, Westmere-EP, Sandy Bridge-EP/Jaketown, Nehalem-EX, Westmere-EX, unknown, Centerton, Baytrail, Ivy Bridge, Haswell, Broadwell, Ivy Bridge-EP/EN/EX/Ivytown, Haswell-EP/EN/EX, Cherrytrail, Avoton, Skylake U/Y, Broadwell-EP/EX, Skylake-SP, Cascade Lake-SP, Broadwell-DE, Knights Landing, Apollo Lake, Skylake, Denverton, Icelake, Tiger Lake, Kabylake/Whiskey Lake, Kabylake, Comet Lake).
+Loading Native engine.
+hi, Steven!
+runtime|
+-------|
+1.0    |
